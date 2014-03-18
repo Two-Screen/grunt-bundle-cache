@@ -1,0 +1,19 @@
+{
+  "name": "grunt-bundle-cache",
+  "version": "0.0.0",
+  "description": "Insert files into an HTML file as AngularJS cache.",
+  "main": "tasks/bundle-cache.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2cashew/grunt-bundle-cache"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2cashew/grunt-bundle-cache/issues"
+  },
+  "homepage": "https://github.com/2cashew/grunt-bundle-cache"
+}
