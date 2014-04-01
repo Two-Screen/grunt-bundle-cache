@@ -10,8 +10,8 @@
     "type": "git",
     "url": "https://github.com/Two-Screen/grunt-bundle-cache"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Two Screen <info@two-screen.tv>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Two-Screen/grunt-bundle-cache/issues"
   },
