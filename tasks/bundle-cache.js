@@ -38,10 +38,8 @@ module.exports = function(grunt) {
     grunt.registerMultiTask('bundlecache', 'write-cache', function() {
         var options = this.options();
 
-        if (!options.base)
-            options.base = [];
-        else if (typeof(options.base) === 'string')
-            options.base = [options.base];
+        if (!options.replace)
+            options.replace = {};
 
         if (!options.filters)
             options.filters = {};
@@ -68,8 +66,8 @@ module.exports = function(grunt) {
      * @return {String}                 The updated HTML
      */
     function bundlecache(destination, files, options) {
-        var baseRe = options.base.map(function(base) {
-            return new RegExp('^' + base);
+        var replace = grunt.util._.map(options.replace, function(repl, re) {
+            return { re: new RegExp(re), repl: repl };
         });
 
         // Check the destination path
@@ -89,8 +87,8 @@ module.exports = function(grunt) {
         // Filter non-existing files and read the contents for each files
         var tags = files.filter(fs.existsSync).map(function(filePath) {
             var relPath = filePath;
-            baseRe.forEach(function(re) {
-                relPath = relPath.replace(re, '');
+            replace.forEach(function(obj) {
+                relPath = relPath.replace(obj.re, obj.repl);
             });
 
             var content = grunt.file.read(filePath);
