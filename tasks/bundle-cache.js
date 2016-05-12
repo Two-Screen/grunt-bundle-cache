@@ -105,9 +105,14 @@ module.exports = function(grunt) {
             return s;
         });
 
-        // Insert the script tags into destination HTML file
+        // Insert the script tags into destination HTML file, before the first
+        // script, or the end of the body.
         var html = grunt.file.read(destination);
-        var idx = html.indexOf('</body>');
+        var idx = html.indexOf('<script');
+        if (idx === -1)
+            idx = html.indexOf('</body>');
+        if (idx === -1)
+            idx = html.length;
         html = html.slice(0, idx) + tags.join('\n') + html.slice(idx);
         grunt.file.write(destination, html);
 
